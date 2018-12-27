@@ -38,4 +38,8 @@ dependencies {
     //firebase
     implementation 'com.google.firebase:firebase-core:16.0.1'
 
+    //koin
+    implementation 'org.koin:koin-android:1.0.1'
+    implementation 'org.koin:koin-androidx-viewmodel:1.0.1'
+
 }

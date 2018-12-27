@@ -2,7 +2,7 @@ package com.depromeet.universalnotice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.depromeet.universalnotice.ui.MainListFragment
+import com.depromeet.universalnotice.ui.mainlist.MainListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,7 +10,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().replace(FRAGMENT_ID,MainListFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(FRAGMENT_ID,
+            MainListFragment()
+        ).commit()
     }
 
     companion object {

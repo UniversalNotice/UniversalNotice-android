@@ -1,4 +1,4 @@
-package com.depromeet.universalnotice.ui
+package com.depromeet.universalnotice.ui.mainlist
 
 import androidx.lifecycle.ViewModel
 
