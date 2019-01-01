@@ -27,6 +27,7 @@ class MainListFragment : Fragment() {
         binding.mainlistRecyclerview.apply {
 //            layoutManager = rvLayoutManager
 //            adapter =
+
         }
 
     }
