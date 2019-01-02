@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 
@@ -42,4 +42,9 @@ dependencies {
     implementation 'org.koin:koin-android:1.0.1'
     implementation 'org.koin:koin-androidx-viewmodel:1.0.1'
 
+    kapt "com.android.databinding:compiler:$compiler_version"
+}
+
+kapt {
+    generateStubs = true
 }
