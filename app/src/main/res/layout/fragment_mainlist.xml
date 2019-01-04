@@ -70,8 +70,7 @@
                 android:textColor="#666666"
                 android:letterSpacing="-0.04"
                 android:lineSpacingExtra="23sp"
-
-                android:text="4개의 알림 리스트가 있습니다"
+                android:text="0개의 알림 리스트가 있습니다"
                 app:layout_constraintStart_toEndOf="@id/mainlist_list_image"
                 app:layout_constraintTop_toBottomOf="@id/mainlist_title"
                 android:layout_marginLeft="4dp"
