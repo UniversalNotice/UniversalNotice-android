@@ -2,29 +2,32 @@ package com.depromeet.universalnotice.ui.mainlist
 
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.depromeet.universalnotice.MainActivity
 import com.depromeet.universalnotice.R
 import com.depromeet.universalnotice.model.Alarm
-import kotlinx.android.synthetic.main.fragment_mainlist.view.*
+import com.depromeet.universalnotice.util.SingleLiveEvent
 
 class MainListViewModel : ViewModel(),View.OnClickListener{
 
 
     //    private lateinit var  alarm : Alarm
-    private lateinit var alarmList: MutableLiveData<List<Alarm>>
+    private lateinit var _alarmList: MutableLiveData<List<Alarm>>
+    val alarmList: LiveData<List<Alarm>>
+        get() = _alarmList
+
     private lateinit var mainListAdapter: MainListAdapter
+
+    private val _createAlarm = SingleLiveEvent<Any>()
+    val createAlarm: LiveData<Any>
+        get() = _createAlarm
 
 
 
     fun init(){
         mainListAdapter = MainListAdapter(this)
-        alarmList = MutableLiveData()
+        _alarmList = MutableLiveData()
     }
 
     fun getAdapter() : MainListAdapter{
@@ -43,11 +46,11 @@ class MainListViewModel : ViewModel(),View.OnClickListener{
         var list= ArrayList<Alarm>()
         list.add(al)
         list.add(al2)
-        alarmList.value = list
+        _alarmList.value = list
     }
 
     fun getlist() :MutableLiveData<List<Alarm>>{
-        return alarmList
+        return _alarmList
     }
 
     fun getItemAt(position: Int):Alarm?{
@@ -65,7 +68,7 @@ class MainListViewModel : ViewModel(),View.OnClickListener{
 
                 }
                 R.id.mainlist_add_btn -> {
-
+                    _createAlarm.call()
                 }
             }
         }
