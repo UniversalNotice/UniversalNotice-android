@@ -42,8 +42,7 @@
                 android:textColor="#16161a"
                 android:letterSpacing="-0.04"
                 android:lineSpacingExtra="10sp"
-                android:text="하루 종일 놀고
-내일되면 또 하루 늦추겠지"
+                android:text="하루 종일 놀고\n내일되면 또 하루 늦추겠지"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/mainlist_remove_btn"
                 android:includeFontPadding="false"
