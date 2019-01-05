@@ -56,7 +56,7 @@ class MainListFragment : Fragment() {
         viewModel.getlist().observe(this, Observer<List<Alarm>> {
             if(it.isNotEmpty())
                 viewModel.setListInAdapter(it)
-                binding.mainlistListText.setText(viewModel.getItemCount()+"개의 알림 리스트가 있습니다")
+//                binding.mainlistListText.setText(viewModel.getItemCount()+"개의 알림 리스트가 있습니다")
         })
     }
 

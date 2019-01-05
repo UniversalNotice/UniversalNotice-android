@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.depromeet.universalnotice.databinding.FragmentIntroBinding
+import kotlinx.android.synthetic.main.fragment_intro.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class IntroMainFragment : Fragment() {
@@ -21,5 +23,13 @@ class IntroMainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
+        binding.position = arguments?.getInt("position")
+
+        //viewModel.pageChange.observe(this, Observer {
+        //})
+
+        //if (arguments?.getInt("position") == 4)
+        //    allow_alert.visibility = View.VISIBLE
+
     }
 }
