@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="adapter"
+            type="androidx.fragment.app.FragmentStatePagerAdapter"/>
+        <variable
+            name="vm"
+            type="com.depromeet.universalnotice.ui.intro.IntroViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/intro_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".IntroActivity">
-</FrameLayout>
+        android:layout_height="match_parent">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adapter="@{adapter}"
+            setCurrentItem="0"
+            app:onPageChangeListener="@{vm.pageChangeListener}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <com.depromeet.universalnotice.ui.CircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="30dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

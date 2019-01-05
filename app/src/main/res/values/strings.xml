@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">universalNotice</string>
+    <string-array name="intro_text_array">
+        <item>안녕하세요,\n만능알림입니다.</item>
+        <item>만능알림은\n“5분만 더”,\n“정각에 해야지”\n같은 미루는 버릇을\n바꾸기 위해 생겼습니다.</item>
+        <item>단순히 알람을\n울리는 것뿐만이 아닌\n시간에 맞게\n계속 알림이 울려\n재촉을 합니다.</item>
+        <item>미루지 않고\n당장 하고 싶은\n마음만은 가득한\n우리를 위한,\n만능알림입니다.</item>
+        <item>만능알림을\n사용하기 위해서는\n알림 허용이\n필요합니다</item>
+    </string-array>
+    <string name="allow_alert_text">알림 허용하기</string>
 </resources>
