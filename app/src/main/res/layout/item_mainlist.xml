@@ -18,16 +18,18 @@
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:background="@drawable/layout_card_list_item"
-            >
+            android:layout_marginBottom="10dp"
+    >
 
         <ImageView
                 android:id="@+id/item_mainlist_category_img"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toTopOf="parent"
-                   android:layout_marginTop="25dp"
-                   android:layout_marginLeft="20dp"
-                   android:src="@drawable/ic_alarm_category_sleep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_alarm_category_sleep"
         />
 
         <TextView
@@ -42,18 +44,19 @@
                 app:layout_constraintTop_toBottomOf="@id/item_mainlist_category_img"
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="4dp"
+                android:text="@{viewmodel.getItemAt(position).time_interval_type+' '+viewmodel.getItemAt(position).time_interval}"
                 tools:text="이전 5분"
         />
-        
+
         <LinearLayout
                 android:id="@+id/item_mainlist_vertical_line"
                 android:layout_width="1dp"
-                      android:layout_height="70dp"
-                      android:background="#ededed"
-                      app:layout_constraintStart_toEndOf="@id/item_mainlist_category_img"
-                      app:layout_constraintTop_toTopOf="parent"
-                      app:layout_constraintBottom_toBottomOf="parent"
-                      android:layout_marginLeft="20dp"
+                android:layout_height="70dp"
+                android:background="#ededed"
+                app:layout_constraintStart_toEndOf="@id/item_mainlist_category_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginLeft="20dp"
         />
 
         <TextView
@@ -66,6 +69,7 @@
                 android:textColor="#0d0d0d"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="6sp"
+                android:text="@{viewmodel.getItemAt(position).title}"
                 tools:text="수면"
                 android:layout_marginTop="18dp"
                 android:layout_marginLeft="20dp"
@@ -79,7 +83,7 @@
                 android:textColor="#333333"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="-10sp"
-
+                android:text="@{viewmodel.getItemAt(position).time}"
                 tools:text="10:00"
                 app:layout_constraintTop_toBottomOf="@id/item_mainlist_category_text"
                 app:layout_constraintStart_toEndOf="@id/item_mainlist_vertical_line"
@@ -94,6 +98,7 @@
                 android:textColor="#666666"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="5sp"
+                android:text="@{viewmodel.getItemAt(position).ampm}"
                 tools:text="PM"
                 app:layout_constraintStart_toEndOf="@id/item_mainlist_time"
                 app:layout_constraintTop_toTopOf="parent"
@@ -109,6 +114,7 @@
                 android:textColor="#666666"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="6sp"
+                android:text="@{viewmodel.getItemAt(position).dayOfTheWeek}"
                 tools:text="월  화  수  목  금"
                 app:layout_constraintStart_toEndOf="@id/item_mainlist_vertical_line"
                 app:layout_constraintTop_toBottomOf="@id/item_mainlist_time"

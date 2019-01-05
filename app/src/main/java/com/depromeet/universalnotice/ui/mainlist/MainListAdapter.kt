@@ -1,10 +1,7 @@
 package com.depromeet.universalnotice.ui.mainlist
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.depromeet.universalnotice.BR
 import com.depromeet.universalnotice.databinding.ItemMainlistBinding
