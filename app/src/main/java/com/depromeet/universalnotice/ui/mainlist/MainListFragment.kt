@@ -1,12 +1,9 @@
 package com.depromeet.universalnotice.ui.mainlist
 
-import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -27,17 +24,6 @@ class MainListFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        val rvLayoutManager = LinearLayoutManager(requireContext())
-//
-//        binding.mainlistRecyclerview.apply {
-//            //            layoutManager = rvLayoutManager
-////            adapter =
-//        }
-    }
-
     fun setupBinding(savedInstanceState: Bundle?){
 //        binding = FragmentMainlistBinding.inflate(inflater, container, false)
         //
@@ -56,7 +42,7 @@ class MainListFragment : Fragment() {
         viewModel.getlist().observe(this, Observer<List<Alarm>> {
             if(it.isNotEmpty())
                 viewModel.setListInAdapter(it)
-                binding.mainlistListText.setText(viewModel.getItemCount()+"개의 알림 리스트가 있습니다")
+                binding.mainlistListText.setText(viewModel.alarmList.value!!.size.toString()+"개의 알림 리스트가 있습니다")
         })
     }
 
