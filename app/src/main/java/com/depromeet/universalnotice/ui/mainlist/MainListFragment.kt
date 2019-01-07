@@ -32,6 +32,7 @@ class MainListFragment : Fragment() {
             viewModel.init()
         }
         binding.vm = viewModel
+        binding.setLifecycleOwner(this@MainListFragment)
 
         setupList()
         setupButtons()

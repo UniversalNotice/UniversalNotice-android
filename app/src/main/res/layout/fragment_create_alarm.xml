@@ -50,7 +50,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/create_cancel_btn"
                     android:layout_marginTop="40dp"
-                    android:paddingHorizontal="12dp">
+                    android:paddingHorizontal="12dp"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/create_category_btn1"
@@ -58,6 +59,7 @@
                         android:layout_width="0dp"
                         android:layout_height="93dp"
                         app:layout_constraintLeft_toLeftOf="parent"
+                        android:onClick="@{viewmodel::onClick}"
                         app:layout_constraintRight_toLeftOf="@id/create_category_btn2"
                         android:background="@drawable/layout_style_round_square">
 
@@ -69,6 +71,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:layout_marginTop="15dp"
+                            setCategory="@{viewmodel.category}"
                             android:src="@drawable/ic_alarm_category_sleep"/>
                     <TextView
                             android:id="@+id/create_category_text1"
@@ -76,6 +79,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
                             android:textColor="#0d0d0d"
+                            setCategoryText="@{viewmodel.category}"
                             android:lineSpacingExtra="6sp"
                             android:gravity="center_horizontal"
                             app:layout_constraintStart_toStartOf="parent"
@@ -91,6 +95,7 @@
                         android:layout_marginHorizontal="4dp"
                         android:layout_width="0dp"
                         android:layout_height="93dp"
+                        android:onClick="@{viewmodel::onClick}"
                         app:layout_constraintLeft_toRightOf="@id/create_category_btn1"
                         app:layout_constraintRight_toRightOf="@id/create_category_btn3"
                         android:background="@drawable/layout_style_round_square"
@@ -103,6 +108,9 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:layout_marginTop="15dp"
+                            setCategory="@{viewmodel.category}"
+                            android:src="@drawable/ic_alarm_category_todo_off"
+
                     />
                     <TextView
                             android:id="@+id/create_category_text2"
@@ -111,6 +119,7 @@
                             android:textSize="14sp"
                             android:textColor="#999999"
                             android:lineSpacingExtra="6sp"
+                            setCategoryText="@{viewmodel.category}"
                             android:gravity="center_horizontal"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -127,6 +136,7 @@
                         app:layout_constraintRight_toRightOf="parent"
                         android:layout_width="0dp"
                         android:layout_height="93dp"
+                        android:onClick="@{viewmodel::onClick}"
                         android:background="@drawable/layout_style_round_square">
                     <ImageView
                             android:id="@+id/create_category_image3"
@@ -136,6 +146,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:layout_marginTop="15dp"
+                            setCategory="@{viewmodel.category}"
                             android:src="@drawable/ic_alarm_category_schedule_off"/>
                     <TextView
                             android:id="@+id/create_category_text3"
@@ -144,6 +155,7 @@
                             android:textSize="14sp"
                             android:textColor="#999999"
                             android:lineSpacingExtra="6sp"
+                            setCategoryText="@{viewmodel.category}"
                             android:gravity="center_horizontal"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -186,7 +198,6 @@
                         android:lineSpacingExtra="7sp"
                         android:background="@null"
                         android:hint="수면"
-                        android:text="수면"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

@@ -28,6 +28,7 @@ class CreateFragment  : DialogFragment() {
         binding = FragmentCreateAlarmBinding.inflate(inflater, container, false)
         setupBinding(savedInstanceState)
 
+
         return binding.root
     }
 
@@ -39,6 +40,8 @@ class CreateFragment  : DialogFragment() {
             viewModel.init()
         }
         binding.viewmodel = viewModel
+        binding.setLifecycleOwner(this@CreateFragment)
+
         setupButtons()
     }
 
