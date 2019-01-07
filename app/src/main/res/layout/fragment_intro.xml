@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.depromeet.universalnotice.ui.intro.IntroViewModel"/>
+        <variable
+                name="position" type="Integer"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_motion1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="19.9dp"
+            android:layout_marginRight="16.2dp"
+            android:visibility="@{position == 0 ? View.VISIBLE : View.GONE}"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_motion2"
+            app:layout_constraintBottom_toTopOf="@id/intro_text"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginBottom="6.8dp"
+            app:layout_constraintHorizontal_bias="0.53"
+            android:visibility="@{position == 1 ? View.VISIBLE : View.GONE}"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_motion3"
+            app:layout_constraintBottom_toTopOf="@id/intro_text"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginBottom="45.5dp"
+            app:layout_constraintHorizontal_bias="0.38"
+            android:visibility="@{position == 2 ? View.VISIBLE : View.GONE}"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_motion4"
+            app:layout_constraintBottom_toTopOf="@id/intro_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginBottom="19.3dp"
+            android:layout_marginLeft="53dp"
+            android:visibility="@{position == 3 ? View.VISIBLE : View.GONE}"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_motion5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="12dp"
+            android:visibility="@{position == 4 ? View.VISIBLE : View.GONE}"/>
+
+        <TextView
+                android:id="@+id/intro_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/sizeTextIntro"
+                android:text="@{vm.getIntroText(position)}"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="14sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="166dp"
+                android:layout_marginLeft="32dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/expression_img"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_expression2"
+                app:layout_constraintTop_toBottomOf="@id/intro_text"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="32dp"/>
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/allow_alert"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/allow_alert_text"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="20sp"
+                android:padding="0dp"
+                app:cornerRadius="5dp"
+                android:visibility="@{position == 4 ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toBottomOf="@id/expression_img"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="96dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
