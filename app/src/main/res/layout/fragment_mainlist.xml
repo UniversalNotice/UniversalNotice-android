@@ -90,6 +90,53 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <androidx.constraintlayout.widget.Group
+                android:id="@+id/mainlist_empty_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            app:constraint_referenced_ids="mainlist_empty_image,mainlist_empty_text1,mainlist_empty_text2"
+                android:visibility="@{vm.isEmpty()}"
+        />
+        <ImageView
+                android:id="@+id/mainlist_empty_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="190dp"
+                android:src="@drawable/ic_icon_emptylist"/>
+        <TextView
+                android:id="@+id/mainlist_empty_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#16161a"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="16sp"
+                android:gravity="center_horizontal"
+                android:text="아직, 알림이 없어요"
+                app:layout_constraintTop_toBottomOf="@id/mainlist_empty_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="26.3dp"
+        />
+        <TextView
+                android:id="@+id/mainlist_empty_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="#666666"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="23sp"
+                android:gravity="center_horizontal"
+                android:text="첫번째 알림을 추가해보세요"
+                app:layout_constraintTop_toBottomOf="@id/mainlist_empty_text1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="7dp"
+        />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

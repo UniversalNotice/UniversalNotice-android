@@ -23,11 +23,16 @@ class MainListViewModel : ViewModel(),View.OnClickListener{
     val createAlarm: LiveData<Any>
         get() = _createAlarm
 
+    private val _isEmpty = MutableLiveData<Int>()
+    val isEmpty : LiveData<Int>
+        get() = _isEmpty
+
 
 
     fun init(){
         mainListAdapter = MainListAdapter(this)
         _alarmList = MutableLiveData()
+        _isEmpty.postValue(View.INVISIBLE)
     }
 
     fun getAdapter() : MainListAdapter{

@@ -7,18 +7,37 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.depromeet.universalnotice.R
 import com.depromeet.universalnotice.util.SingleLiveEvent
+import java.sql.Date
+import java.sql.Time
 
 class CreateAlarmViewModel : ViewModel(), View.OnClickListener{
 
-    private val _dismiss = SingleLiveEvent<Any>()
+    private val _dismiss = SingleLiveEvent<Any>() // 뒤로가기 버튼
     val dismiss: LiveData<Any>
         get() = _dismiss
 
-    private val _category = MutableLiveData<Int>()
+    private val _category = MutableLiveData<Int>() // 카테고리 버튼
     val category: LiveData<Int>
         get() = _category
 
-    // TODO: api 에 따른 model값 변수 생성.
+    private val _alarmName = MutableLiveData<String>() // 알림 이름
+    val alarmName : LiveData<String>
+        get() = _alarmName
+
+    private val _isAlarm = MutableLiveData<Boolean>() // 목표시간 알림울림 설정
+    val isAlarm : LiveData<Boolean>
+        get() = _isAlarm
+
+    private val _targetTime = MutableLiveData<Time>() // 목표 시간
+    val targetTime : LiveData<Time>
+        get() = _targetTime
+
+    private val _alarmTiming = MutableLiveData<Int>() // 알람 이전,이후 버튼
+    val alarmTiming : LiveData<Int>
+        get() = _alarmTiming
+
+    // TODO: api 에 따른 model값 변수 생성 ( 시작구간, 끝 구간, 알림 간격, 반복 요일, 반복설정 버튼, 특정일 알림, 강도 설정)
+
 
 
     fun init(){
