@@ -12,4 +12,3 @@ data class Alarm(
     val repeitition: Boolean, // true = 매주 , false = 한번
     val isEnable : Boolean // 알람 on..off
 )
-
