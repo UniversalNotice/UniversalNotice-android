@@ -8,6 +8,7 @@ import com.depromeet.universalnotice.databinding.ActivityIntroBinding
 import com.depromeet.universalnotice.ui.intro.IntroPagerAdapter
 import com.depromeet.universalnotice.ui.intro.IntroViewModel
 import kotlinx.android.synthetic.main.activity_intro.*
+import org.jetbrains.anko.startActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -16,7 +17,7 @@ class IntroActivity : AppCompatActivity() {
         DataBindingUtil.setContentView<ActivityIntroBinding>(this, R.layout.activity_intro)
     }
 
-    private val viewModel by viewModel<IntroViewModel>{parametersOf(resources.getStringArray(R.array.intro_text_array))}
+    private val viewModel by viewModel<IntroViewModel>{parametersOf(resources.getStringArray(R.array.intro_text_array), IntroRepository(applicationContext))}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,5 +30,9 @@ class IntroActivity : AppCompatActivity() {
             indicator.selectDot(it)
         })
 
+        viewModel.activityToStart.observe(this, Observer {
+            startActivity<MainActivity>()
+            finish()
+        })
     }
 }
