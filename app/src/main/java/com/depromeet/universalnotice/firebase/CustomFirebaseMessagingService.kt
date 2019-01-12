@@ -18,8 +18,10 @@ class CustomFirebaseMessagingService : FirebaseMessagingService(){
     private val TAG = "FirebaseService"
 
     override fun onNewToken(token: String?) {
+        super.onNewToken(token)
         Log.d(TAG, "new Token: $token")
     }
+
     override fun onMessageReceived(p0: RemoteMessage) {
 
         Log.d(TAG, "From: " + p0.from)

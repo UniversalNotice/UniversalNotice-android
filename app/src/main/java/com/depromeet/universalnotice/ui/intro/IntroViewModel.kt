@@ -7,7 +7,8 @@ import androidx.viewpager.widget.ViewPager
 import com.depromeet.universalnotice.IntroRepository
 import org.jetbrains.anko.AnkoLogger
 
-class IntroViewModel(private val introTextArray: Array<String>, private val introRepo: IntroRepository) : ViewModel(), AnkoLogger {
+class IntroViewModel(private val introTextArray: Array<String>, private val introRepo: IntroRepository) : ViewModel(),
+    AnkoLogger {
     private val _pageChange: MutableLiveData<Int> = MutableLiveData()
     private val _activityToStart: MutableLiveData<Boolean> = MutableLiveData()
 

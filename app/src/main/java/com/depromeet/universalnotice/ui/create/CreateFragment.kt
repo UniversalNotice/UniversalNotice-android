@@ -12,17 +12,18 @@ import com.depromeet.universalnotice.R
 import com.depromeet.universalnotice.common.PreferencesManager
 import com.depromeet.universalnotice.databinding.FragmentCreateAlarmBinding
 
-class CreateFragment  : DialogFragment() {
-    private lateinit var viewModel : CreateAlarmViewModel
+class CreateFragment : DialogFragment() {
+    private lateinit var viewModel: CreateAlarmViewModel
     private lateinit var binding: FragmentCreateAlarmBinding
 
     override fun onStart() {
         super.onStart()
-        if(dialog == null)
+        if (dialog == null)
             return
 
         dialog!!.window.setWindowAnimations(
-            R.style.dialog_animation_move_to_up)
+            R.style.dialog_animation_move_to_up
+        )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,9 +35,8 @@ class CreateFragment  : DialogFragment() {
         return binding.root
     }
 
-    fun setupBinding(savedInstanceState: Bundle?){
+    fun setupBinding(savedInstanceState: Bundle?) {
 //        binding = FragmentMainlistBinding.inflate(inflater, container, false)
-        //
         viewModel = ViewModelProviders.of(this).get(CreateAlarmViewModel::class.java)
         if (savedInstanceState == null) {
             viewModel.init()
@@ -47,10 +47,9 @@ class CreateFragment  : DialogFragment() {
         setupButtons()
     }
 
-    fun setupButtons(){
-        viewModel.dismiss.observe(this, Observer{dismiss()})
+    fun setupButtons() {
+        viewModel.dismiss.observe(this, Observer { dismiss() })
     }
-
 
 
 }

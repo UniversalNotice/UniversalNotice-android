@@ -171,3 +171,6 @@ out
 gen
 app/google-services.json
 app/libs/
+
+#keystore
+keystore.properties

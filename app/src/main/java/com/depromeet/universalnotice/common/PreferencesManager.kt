@@ -38,11 +38,22 @@ class PreferencesManager{
         fun setFcmToken(token: String) {
             val editor = pref?.edit()
             editor?.putString(FCM_TOKEN_PROPERTY_NAME, token)
-            editor?.commit()
+            editor?.apply()
+        }
+
+        fun getUuid():String?{
+            return pref?.getString(DEVICE_UUID,"")
+        }
+
+        fun setUuid(){
+            val uuid = generateUuid()
+            val editor = pref?.edit()
+            editor?.putString(DEVICE_UUID,uuid)
+            editor?.apply()
         }
 
         @SuppressLint("MissingPermission")
-        fun getUuid(): String? {
+        fun generateUuid(): String? {
             val deviceUUID : UUID
             val cacheDeviceID = pref?.getString(CACHE_DEVICE_ID,"")
             if(cacheDeviceID!=""){

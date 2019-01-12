@@ -5,6 +5,10 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -16,6 +20,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug{
+            buildConfigField "String", "BaseServerURL", keystoreProperties.getProperty("baseServerUrl")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -52,10 +59,14 @@ dependencies {
     //ktx
     implementation "androidx.core:core-ktx:$ktx_version"
 
-    kapt "com.android.databinding:compiler:$compiler_version"
-//    implementation 'com.google.firebase:firebase-messaging:17.0.0:15.0.0'
-}
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.4.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.4.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
 
-kapt {
-    generateStubs = true
+    kapt "com.android.databinding:compiler:$compiler_version"
 }
+//
+//kapt {
+//    generateStubs = true
+//}
