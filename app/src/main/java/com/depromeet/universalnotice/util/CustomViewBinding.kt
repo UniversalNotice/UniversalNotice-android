@@ -2,10 +2,10 @@ package com.depromeet.universalnotice.util
 
 import android.graphics.Color
 import android.util.Log
-import android.widget.AutoCompleteTextView
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.databinding.BindingAdapter
+import androidx.databinding.adapters.SeekBarBindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +20,7 @@ fun setAdapter(recyclerView: RecyclerView, adapter: MainListAdapter) {
     recyclerView.setAdapter(adapter)
 }
 
+
 @BindingAdapter("setCategory")
 fun setCategory(imageview: ImageView, category: Int) {
     if (category == 1) {
@@ -29,13 +30,13 @@ fun setCategory(imageview: ImageView, category: Int) {
             R.id.create_category_image3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule_off)
         }
     } else if (category == 2) {
-        when(imageview.id){
+        when (imageview.id) {
             R.id.create_category_image1 -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep_off)
             R.id.create_category_image2 -> imageview.setImageResource(R.drawable.ic_alarm_category_todo)
             R.id.create_category_image3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule_off)
         }
-    } else{
-        when(imageview.id){
+    } else {
+        when (imageview.id) {
             R.id.create_category_image1 -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep_off)
             R.id.create_category_image2 -> imageview.setImageResource(R.drawable.ic_alarm_category_todo_off)
             R.id.create_category_image3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule)
@@ -44,7 +45,7 @@ fun setCategory(imageview: ImageView, category: Int) {
 }
 
 @BindingAdapter("setCategoryText")
-fun setCategoryText(textView: TextView, category: Int){
+fun setCategoryText(textView: TextView, category: Int) {
     if (category == 1) {
         when (textView.id) {
             R.id.create_category_text1 -> textView.setTextColor(Color.parseColor("#0d0d0d"))
@@ -52,13 +53,13 @@ fun setCategoryText(textView: TextView, category: Int){
             R.id.create_category_text3 -> textView.setTextColor(Color.parseColor("#999999"))
         }
     } else if (category == 2) {
-        when(textView.id){
+        when (textView.id) {
             R.id.create_category_text1 -> textView.setTextColor(Color.parseColor("#999999"))
             R.id.create_category_text2 -> textView.setTextColor(Color.parseColor("#0d0d0d"))
             R.id.create_category_text3 -> textView.setTextColor(Color.parseColor("#999999"))
         }
-    } else{
-        when(textView.id){
+    } else {
+        when (textView.id) {
             R.id.create_category_text1 -> textView.setTextColor(Color.parseColor("#999999"))
             R.id.create_category_text2 -> textView.setTextColor(Color.parseColor("#999999"))
             R.id.create_category_text3 -> textView.setTextColor(Color.parseColor("#0d0d0d"))
