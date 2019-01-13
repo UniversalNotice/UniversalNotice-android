@@ -28,7 +28,7 @@ class MainListViewModel(
         get() = _isEmpty
 
 
-    fun init() {
+    init {
         mainListAdapter = MainListAdapter(this)
         _alarmList = MutableLiveData()
         _isEmpty.postValue(View.INVISIBLE)
@@ -46,10 +46,8 @@ class MainListViewModel(
     fun fetchList() {
 //        //TODO : alarmlist 갱신.
         var al = Alarm(1, "알림", "08:00", "AM", true, "이전", "5분", "월 화 수", true, true)
-        var al2 = Alarm(1, "알리미", "10:00", "AM", true, "이후", "5분", "월 화 수 목 금", true, true)
+        var al2 = Alarm(1, "알리미", "10:00", "AM", true, "이후", "5분", "월 화 수 목 금", true,false)
         var list = ArrayList<Alarm>()
-        list.add(al)
-        list.add(al)
         list.add(al)
         list.add(al)
         list.add(al)

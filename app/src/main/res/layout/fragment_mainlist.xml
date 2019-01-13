@@ -48,7 +48,7 @@
                     android:descendantFocusability="blocksDescendants"
                     android:id="@+id/mainlist_content_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="0dp">
                 <TextView
                         android:id="@+id/mainlist_title"
                         android:layout_width="wrap_content"
@@ -100,6 +100,7 @@
                         android:layout_marginTop="17dp"
                         setAdapter="@{vm.getAdapter()}"
                         android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never"
                         android:focusable="false"
                 />
 

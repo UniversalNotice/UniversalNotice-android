@@ -3,5 +3,6 @@ package com.depromeet.universalnotice.di
 val appModules = arrayListOf(
     introModule,
     apiModules,
-    mainListModule
+    mainListModule,
+    createModule
 )
