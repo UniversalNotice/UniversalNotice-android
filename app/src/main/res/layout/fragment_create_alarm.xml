@@ -37,6 +37,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:text="저장"
+                    android:onClick="@{viewmodel::onClick}"
                     android:textColor="#000000"
                     android:background="@null"
                     android:layout_marginRight="15dp"
@@ -102,14 +103,14 @@
                 >
                     <ImageView
                             android:id="@+id/create_category_image2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:layout_marginTop="15dp"
                             setCategory="@{viewmodel.category}"
-                            android:src="@drawable/ic_alarm_category_todo_off"
+                            android:src="@drawable/ic_alarm_category_todo"
 
                     />
                     <TextView
@@ -175,6 +176,7 @@
                     app:layout_constraintTop_toBottomOf="@id/create_category_btn_layout"
                     android:layout_marginTop="8dp"
                     android:layout_marginHorizontal="16dp"
+
                     android:background="@drawable/layout_style_round_square"
             >
                 <TextView
@@ -202,6 +204,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginLeft="113dp"
+                        android:onTextChanged="@{viewmodel::onTextChanged}"
                 />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -239,16 +242,22 @@
                         app:layout_constraintEnd_toStartOf="@id/create_target_time_btn"
                         android:layout_marginTop="13dp"
                         android:layout_marginRight="6dp"
+                        android:onClick="@{viewmodel::onClick}"
+                        setIsAlarmText="@{viewmodel.isAlarm}"
                 />
                 <ImageButton
                         android:id="@+id/create_target_time_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginTop="13dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginRight="32dp"
                         android:background="@null"
+                        android:src="@drawable/ic_icon_checked_off"
+                        android:scaleType="centerCrop"
+                        android:onClick="@{viewmodel::onClick}"
+                        setIsAlarmBtn="@{viewmodel.isAlarm}"
                 />
                 <TextView
                         android:id="@+id/create_target_time"
@@ -289,6 +298,8 @@
                         android:text="이전 알림"
                         android:textColor="#298afd"
                         style="?android:attr/borderlessButtonStyle"
+                        setAlarmTiming="@{viewmodel.alarmTiming}"
+                        android:onClick="@{viewmodel::onClick}"
                 />
 
                 <Button
@@ -301,7 +312,9 @@
                         android:layout_marginLeft="12dp"
                         android:text="이후 알림"
                         android:textColor="#80666666"
-                        style="?android:attr/borderlessButtonStyle"/>
+                        style="?android:attr/borderlessButtonStyle"
+                        setAlarmTiming="@{viewmodel.alarmTiming}"
+                        android:onClick="@{viewmodel::onClick}"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

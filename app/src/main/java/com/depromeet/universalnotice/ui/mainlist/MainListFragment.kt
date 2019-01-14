@@ -19,20 +19,18 @@ class MainListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMainlistBinding.inflate(inflater, container, false)
-        setupBinding(savedInstanceState)
+
+        binding.apply { vm = this@MainListFragment.viewModel
+            setLifecycleOwner(this@MainListFragment) }
+
+        setupList()
+        setupButtons()
 
         return binding.root
     }
 
     fun setupBinding(savedInstanceState: Bundle?) {
-        binding.vm = this@MainListFragment.viewModel
-        binding.setLifecycleOwner(this@MainListFragment)
 
-        if (savedInstanceState == null)
-            viewModel.init()
-
-        setupList()
-        setupButtons()
     }
 
     fun setupList() {
