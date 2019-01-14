@@ -200,6 +200,7 @@
                         android:lineSpacingExtra="7sp"
                         android:background="@null"
                         android:hint="수면"
+                        android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -267,7 +268,10 @@
                         android:textColor="#333333"
                         android:letterSpacing="0.1"
                         android:lineSpacingExtra="-22sp"
-                        android:text="10:00"
+                        android:text="@{viewmodel.targetTime}"
+                        android:onClick="@{viewmodel::onClick}"
+                        android:textStyle="normal"
+                        android:fontFamily="@font/time_font_family"
                         app:layout_constraintTop_toBottomOf="@id/create_target_time_text"
                         app:layout_constraintStart_toStartOf="@id/create_target_time_text"
                         android:layout_marginTop="18dp"
@@ -280,7 +284,9 @@
                         android:textColor="#0d0d0d"
                         android:letterSpacing="-0.03"
                         android:lineSpacingExtra="-4sp"
-                        android:text="PM"
+                        android:text="@{viewmodel.targetTime_ampm}"
+                        android:textStyle="normal"
+                        android:fontFamily="@font/time_font_family"
                         app:layout_constraintStart_toEndOf="@id/create_target_time"
                         app:layout_constraintBottom_toBottomOf="@id/create_target_time"
                         android:layout_marginLeft="9dp"
@@ -348,10 +354,11 @@
                         android:textColor="#80666666"
                         android:letterSpacing="0.1"
                         android:lineSpacingExtra="0sp"
-                        android:text="10:00"
+                        android:text="@{viewmodel.intervalStartTime}"
                         app:layout_constraintStart_toEndOf="@id/create_time_interval_text"
                         app:layout_constraintTop_toTopOf="@id/create_time_interval_text"
                         android:layout_marginLeft="38dp"
+                        android:onClick="@{viewmodel::onClick}"
                 />
                 <TextView
                         android:id="@+id/create_time_interval_starttime_ampm"
@@ -361,11 +368,12 @@
                         android:textColor="#80666666"
                         android:letterSpacing="-0.03"
                         android:lineSpacingExtra="4sp"
-                        android:text="PM"
+                        android:text="@{viewmodel.intervalStartTime_ampm}"
                         app:layout_constraintStart_toEndOf="@id/crete_time_interval_starttime"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginTop="16dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="6dp"
+                        android:onClick="@{viewmodel::onClick}"
                 />
 
                 <TextView
@@ -390,11 +398,13 @@
                         android:textSize="18sp"
                         android:textColor="#0d0d0d"
                         android:letterSpacing="0.1"
+                        android:textStyle=""
                         android:lineSpacingExtra="0sp"
-                        android:text="10:00"
+                        android:text="@{viewmodel.intervalEndTime}"
                         app:layout_constraintTop_toTopOf="@id/crete_time_interval_starttime"
                         app:layout_constraintStart_toEndOf="@id/create_time_interval_to_from"
                         android:layout_marginLeft="8dp"
+                        android:onClick="@{viewmodel::onClick}"
                 />
 
                 <TextView
@@ -405,10 +415,11 @@
                         android:textColor="#0d0d0d"
                         android:letterSpacing="-0.03"
                         android:lineSpacingExtra="4sp"
-                        android:text="PM"
+                        android:text="@{viewmodel.intervalEndTime_ampm}"
                         app:layout_constraintTop_toTopOf="@id/create_time_interval_starttime_ampm"
                         app:layout_constraintStart_toEndOf="@id/crete_time_interval_endtime"
                         android:layout_marginLeft="6dp"
+                        android:onClick="@{viewmodel::onClick}"
                 />
 
                 <TextView
@@ -419,7 +430,7 @@
                         android:textColor="#298afd"
                         android:lineSpacingExtra="7sp"
                         android:gravity="center_horizontal"
-                        android:text="5분"
+                        android:text="@{viewmodel.alarmInterval}"
                         app:layout_constraintStart_toStartOf="@id/crete_time_interval_starttime"
                         app:layout_constraintTop_toTopOf="@id/create_time_alarm_interval_text"
                 />
@@ -431,6 +442,12 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginLeft="12dp"
                         android:layout_marginTop="53dp"
+                        android:min="0"
+                        android:max="6"
+                        android:progress="1"
+                        android:thumbTint="#298afd"
+                        android:progressTint="#298afd"
+                        android:onProgressChanged="@{viewmodel::onProgressChanged}"
                 />
 
                 <TextView
@@ -609,11 +626,24 @@
                         android:textColor="#80666666"
                         android:lineSpacingExtra="7sp"
                         android:text="특정일 알림"
+                        android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@id/create_repeat_border"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginLeft="113dp"
                         android:layout_marginTop="11dp"
                 />
+                
+                <ImageView
+                        android:id="@+id/create_repeat_specific_day_btn"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_icon_checked_off"
+                        app:layout_constraintStart_toEndOf="@id/create_repeat_specific_day_text"
+                        app:layout_constraintTop_toTopOf="@id/create_repeat_specific_day_text"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="6dp"
+                        android:scaleType="centerCrop"/>
 
                 <TextView
                         android:id="@+id/create_repeat_specific_day_date"

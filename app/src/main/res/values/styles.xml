@@ -6,8 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:textViewStyle">@style/TextViewStyle</item>-->
+        <!--<item name="android:buttonStyle">@style/ButtonStyle</item>-->
+        <!--<item name="android:editTextStyle">@style/EditTextStyle</item>-->
+        <!-- TODO 폰트 적용시 레이아웃 깨짐 현상 및 일괄 적용법 고민할 것.-->
     </style>
-    <string name="asdf">asdasd</string>
 
 
     <style name="dialog_animation_move_to_up">
@@ -21,4 +24,17 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+     <!--커스텀 폰트 적용-->
+    <style name="TextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/textview_font_family</item>
+    </style>
+    <style name="ButtonStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <item name="android:fontFamily">@font/button_font_family</item>
+    </style>
+    <style name="EditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/textview_font_family</item>
+    </style>
+
+
+    
 </resources>
