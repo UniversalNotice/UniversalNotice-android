@@ -244,9 +244,9 @@
                         android:layout_marginTop="13dp"
                         android:layout_marginRight="6dp"
                         android:onClick="@{viewmodel::onClick}"
-                        setIsAlarmText="@{viewmodel.isAlarm}"
+                        setIsActiveText="@{viewmodel.isAlarm}"
                 />
-                <ImageButton
+                <ImageView
                         android:id="@+id/create_target_time_btn"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
@@ -258,7 +258,7 @@
                         android:src="@drawable/ic_icon_checked_off"
                         android:scaleType="centerCrop"
                         android:onClick="@{viewmodel::onClick}"
-                        setIsAlarmBtn="@{viewmodel.isAlarm}"
+                        setIsActiveBtn="@{viewmodel.isAlarm}"
                 />
                 <TextView
                         android:id="@+id/create_target_time"
@@ -501,6 +501,8 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginTop="12dp"
                         android:layout_marginLeft="69dp"
+                        android:onClick="@{viewmodel::onClick}"
+                        setDaysOfTheWeek="@{viewmodel.day_of_the_week[0]}"
                 />
                 <TextView
                         android:id="@+id/create_repeat_tuesday"
@@ -514,6 +516,8 @@
                         app:layout_constraintStart_toEndOf="@id/create_repeat_monday"
                         app:layout_constraintTop_toTopOf="@id/create_repeat_monday"
                         android:layout_marginLeft="16.8dp"
+                        android:onClick="@{viewmodel::onClick}"
+                        setDaysOfTheWeek="@{viewmodel.day_of_the_week[1]}"
                 />
                 <TextView
                         android:id="@+id/create_repeat_wednesday"
@@ -527,6 +531,8 @@
                         app:layout_constraintStart_toEndOf="@id/create_repeat_tuesday"
                         app:layout_constraintTop_toTopOf="@id/create_repeat_tuesday"
                         android:layout_marginLeft="16.8dp"
+                        android:onClick="@{viewmodel::onClick}"
+                        setDaysOfTheWeek="@{viewmodel.day_of_the_week[2]}"
                 />
                 <TextView
                         android:id="@+id/create_repeat_thursday"
@@ -540,6 +546,8 @@
                         app:layout_constraintStart_toEndOf="@id/create_repeat_wednesday"
                         app:layout_constraintTop_toTopOf="@id/create_repeat_wednesday"
                         android:layout_marginLeft="16.8dp"
+                        android:onClick="@{viewmodel::onClick}"
+                        setDaysOfTheWeek="@{viewmodel.day_of_the_week[3]}"
                 />
                 <TextView
                         android:id="@+id/create_repeat_friday"
@@ -553,6 +561,8 @@
                         app:layout_constraintTop_toTopOf="@id/create_repeat_thursday"
                         app:layout_constraintStart_toEndOf="@id/create_repeat_thursday"
                         android:layout_marginLeft="16.8dp"
+                        android:onClick="@{viewmodel::onClick}"
+                        setDaysOfTheWeek="@{viewmodel.day_of_the_week[4]}"
                 />
                 <TextView
                         android:id="@+id/create_repeat_saturday"
@@ -566,6 +576,8 @@
                         app:layout_constraintTop_toTopOf="@id/create_repeat_friday"
                         app:layout_constraintStart_toEndOf="@id/create_repeat_friday"
                         android:layout_marginLeft="16.8dp"
+                        android:onClick="@{viewmodel::onClick}"
+                        setDaysOfTheWeek="@{viewmodel.day_of_the_week[5]}"
                 />
                 <TextView
                         android:id="@+id/create_repeat_sunday"
@@ -579,6 +591,8 @@
                         app:layout_constraintTop_toTopOf="@id/create_repeat_saturday"
                         app:layout_constraintStart_toEndOf="@id/create_repeat_saturday"
                         android:layout_marginLeft="16.8dp"
+                        android:onClick="@{viewmodel::onClick}"
+                        setDaysOfTheWeek="@{viewmodel.day_of_the_week[6]}"
                 />
 
                 <Button
@@ -592,6 +606,8 @@
                         android:text="매주반복"
                         android:textColor="#298afd"
                         style="?android:attr/borderlessButtonStyle"
+                        android:onClick="@{viewmodel::onClick}"
+                        setRepeatType="@{viewmodel.repeatType}"
                 />
 
                 <Button
@@ -605,6 +621,8 @@
                         android:text="한 번만"
                         android:textColor="#80666666"
                         style="?android:attr/borderlessButtonStyle"
+                        android:onClick="@{viewmodel::onClick}"
+                        setRepeatType="@{viewmodel.repeatType}"
                 />
 
                 <LinearLayout
@@ -631,10 +649,12 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginLeft="113dp"
                         android:layout_marginTop="11dp"
+                        android:onClick="@{viewmodel::onClick}"
+                        setIsActiveText="@{viewmodel.isSpecificAlarm}"
                 />
                 
                 <ImageView
-                        android:id="@+id/create_repeat_specific_day_btn"
+                        android:id="@+id/create_repeat_specific_day_img"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:background="@null"
@@ -643,7 +663,10 @@
                         app:layout_constraintTop_toTopOf="@id/create_repeat_specific_day_text"
                         android:layout_marginTop="4dp"
                         android:layout_marginLeft="6dp"
-                        android:scaleType="centerCrop"/>
+                        android:scaleType="centerCrop"
+                        android:onClick="@{viewmodel::onClick}"
+                        setIsActiveBtn="@{viewmodel.isSpecificAlarm}"
+                />
 
                 <TextView
                         android:id="@+id/create_repeat_specific_day_date"
@@ -652,10 +675,11 @@
                         android:textSize="16sp"
                         android:textColor="#80666666"
                         android:lineSpacingExtra="8sp"
-                        android:text="2019 년   01 월  01일"
+                        android:text="@{viewmodel.specificDayText}"
                         app:layout_constraintStart_toStartOf="@id/create_repeat_specific_day_text"
                         app:layout_constraintTop_toBottomOf="@id/create_repeat_specific_day_text"
                         android:layout_marginTop="8dp"
+                        android:onClick="@{viewmodel::onClick}"
                 />
 
 
@@ -698,6 +722,8 @@
                         android:text="약"
                         android:textColor="#298afd"
                         style="?android:attr/borderlessButtonStyle"
+                        android:onClick="@{viewmodel::onClick}"
+                        setStrengthButton="@{viewmodel.alarmStrength}"
                 />
                 <Button
                         android:id="@+id/create_strength_btn_2"
@@ -711,6 +737,8 @@
                         android:text="중"
                         android:textColor="#80666666"
                         style="?android:attr/borderlessButtonStyle"
+                        android:onClick="@{viewmodel::onClick}"
+                        setStrengthButton="@{viewmodel.alarmStrength}"
                 />
                 <Button
                         android:id="@+id/create_strength_btn_3"
@@ -724,6 +752,8 @@
                         android:text="강"
                         android:textColor="#80666666"
                         style="?android:attr/borderlessButtonStyle"
+                        android:onClick="@{viewmodel::onClick}"
+                        setStrengthButton="@{viewmodel.alarmStrength}"
                 />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
