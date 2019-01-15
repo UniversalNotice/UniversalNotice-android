@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import com.depromeet.universalnotice.R
@@ -33,6 +34,8 @@ class CreateFragment : DialogFragment() {
         }
 
         setupButtons()
+        setTargetTimeClicked()
+        setIntervalAlarmClicked()
 
         return binding.root
     }
@@ -43,10 +46,26 @@ class CreateFragment : DialogFragment() {
         viewModel.dismiss.observe(this, Observer { dismiss() })
     }
 
-    fun targetTimeClicked(){
+    fun setTargetTimeClicked(){
         viewModel.targetTimeClick.observe(this, Observer {
-
+            var dialog = TimePickerFragment(viewModel,1)
+            dialog.setStyle(DialogFragment.STYLE_NO_TITLE,R.style.AppTheme)
+            dialog.show(this!!.fragmentManager!!, "TimePickerFragment")
         })
+    }
+
+    fun setIntervalAlarmClicked(){
+        viewModel.intervalStartClick.observe(this, Observer {
+            var dialog = TimePickerFragment(viewModel,2)
+            dialog.setStyle(DialogFragment.STYLE_NO_TITLE,R.style.AppTheme)
+            dialog.show(this!!.fragmentManager!!, "TimePickerFragment")
+        })
+        viewModel.intervalEndClick.observe(this, Observer {
+            var dialog = TimePickerFragment(viewModel,3)
+            dialog.setStyle(DialogFragment.STYLE_NO_TITLE,R.style.AppTheme)
+            dialog.show(this!!.fragmentManager!!, "TimePickerFragment")
+        })
+
     }
 
 
