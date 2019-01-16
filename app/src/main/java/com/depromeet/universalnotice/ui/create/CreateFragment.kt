@@ -36,6 +36,7 @@ class CreateFragment : DialogFragment() {
         setupButtons()
         setTargetTimeClicked()
         setIntervalAlarmClicked()
+        setSpecificDateClicked()
 
         return binding.root
     }
@@ -65,7 +66,14 @@ class CreateFragment : DialogFragment() {
             dialog.setStyle(DialogFragment.STYLE_NO_TITLE,R.style.AppTheme)
             dialog.show(this!!.fragmentManager!!, "TimePickerFragment")
         })
+    }
 
+    fun setSpecificDateClicked(){
+        viewModel.datePickerClick.observe(this, Observer {
+            var dialog = DatePickerFragment(viewModel)
+            dialog.setStyle(DialogFragment.STYLE_NO_TITLE,R.style.AppTheme)
+            dialog.show(this!!.fragmentManager!!, "DatePickerFragment")
+        })
     }
 
 

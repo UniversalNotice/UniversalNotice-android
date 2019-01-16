@@ -70,62 +70,60 @@ fun setCategoryText(textView: TextView, category: Int) {
     }
 }
 
-@BindingAdapter("setItemImage","imageViewcategory")
-fun setItemImage(imageview:ImageView,bool:Boolean,category:Int){
-    if(bool==true){
-        when(category){
-            1-> imageview.setImageResource(R.drawable.ic_alarm_category_sleep)
-            2-> imageview.setImageResource(R.drawable.ic_alarm_category_todo)
-            3-> imageview.setImageResource(R.drawable.ic_alarm_category_schedule)
+@BindingAdapter("setItemImage", "imageViewcategory")
+fun setItemImage(imageview: ImageView, bool: Boolean, category: Int) {
+    if (bool == true) {
+        when (category) {
+            1 -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep)
+            2 -> imageview.setImageResource(R.drawable.ic_alarm_category_todo)
+            3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule)
         }
-    }
-    else{
-        when(category){
-            1-> imageview.setImageResource(R.drawable.ic_alarm_category_sleep_off)
-            2-> imageview.setImageResource(R.drawable.ic_alarm_category_todo_off)
-            3-> imageview.setImageResource(R.drawable.ic_alarm_category_schedule_off)
+    } else {
+        when (category) {
+            1 -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep_off)
+            2 -> imageview.setImageResource(R.drawable.ic_alarm_category_todo_off)
+            3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule_off)
         }
     }
 }
 
 @BindingAdapter("setItemTextColor")
-fun setTextViewColor(textView: TextView,bool: Boolean){
-    if(bool==true){
-        when(textView.id){
+fun setTextViewColor(textView: TextView, bool: Boolean) {
+    if (bool == true) {
+        when (textView.id) {
             R.id.item_mainlist_time_interval_type -> textView.textColor = Color.parseColor("#555555")
             R.id.item_mainlist_category_text -> textView.textColor = Color.parseColor("#0d0d0d")
             R.id.item_mainlist_time -> textView.textColor = Color.parseColor("#333333")
             R.id.item_mainlist_time_ampm -> textView.textColor = Color.parseColor("#666666")
             R.id.item_mainlist_day_of_the_week -> textView.textColor = Color.parseColor("#666666")
         }
-    }
-    else{
+    } else {
         textView.textColor = Color.parseColor("#999999")
     }
 }
 
-@BindingAdapter("setIsAlarmText")
-fun setIsAlarmText(textView: TextView,bool: Boolean){
-    if(bool==true){
+@BindingAdapter("setIsActiveText")
+fun setIsAlarmText(textView: TextView, bool: Boolean) {
+    if (bool == true) {
         textView.textColor = Color.parseColor("#0d0d0d")
-    }else{
+    } else {
         textView.textColor = Color.parseColor("#80666666")
     }
 }
 
-@BindingAdapter("setIsAlarmBtn")
-fun setIsAlarmBtn(imageButton: ImageButton,bool: Boolean){
-    if(bool==true){
-        imageButton.setImageResource(R.drawable.ic_icon_checked_on)
-    }else{
-        imageButton.setImageResource(R.drawable.ic_icon_checked_off)
+@BindingAdapter("setIsActiveBtn")
+fun setIsAlarmBtn(image: ImageView, bool: Boolean) {
+    if (bool == true) {
+        image.setImageResource(R.drawable.ic_icon_checked_on)
+    } else {
+        image.setImageResource(R.drawable.ic_icon_checked_off)
     }
 }
 
 @BindingAdapter("setAlarmTiming")
-fun setAlarmTiming(button: Button,type:Int){
-    if(type==1){
-        when(button.id){
+fun setAlarmTiming(button: Button, type: Int) {
+    if (type == 1) {
+        when (button.id) {
             R.id.create_target_time_before -> button.apply {
                 setBackgroundResource(R.drawable.button_style_round_square_blue)
                 setTextColor(Color.parseColor("#298afd"))
@@ -133,19 +131,98 @@ fun setAlarmTiming(button: Button,type:Int){
             R.id.create_target_time_after -> button.apply {
                 setBackgroundResource(R.drawable.button_style_round_square)
                 setTextColor(Color.parseColor("#80666666"))
+            }
+        }
+    } else if (type == 2) {
+        when (button.id) {
+            R.id.create_target_time_before -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square)
+                setTextColor(Color.parseColor("#80666666"))
+            }
+            R.id.create_target_time_after -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square_blue)
+                setTextColor(Color.parseColor("#298afd"))
             }
         }
     }
-    else if (type==2){
-        when(button.id){
-            R.id.create_target_time_before -> button.apply {
+}
+
+@BindingAdapter("setDaysOfTheWeek")
+fun setDaysoftheWeek(textView: TextView, bool: Boolean) {
+    if (bool == true) textView.setTextColor(Color.parseColor("#298afd")) else textView.setTextColor(Color.parseColor("#666666"))
+}
+
+@BindingAdapter("setRepeatType")
+fun setRepeatType(button: Button, type: Int) {
+    when (type) {
+        1 -> when (button.id) {
+            R.id.create_repeat_onetime_btn -> button.apply {
                 setBackgroundResource(R.drawable.button_style_round_square)
                 setTextColor(Color.parseColor("#80666666"))
             }
-            R.id.create_target_time_after -> button.apply {
+            R.id.create_repeat_week_btn -> button.apply {
                 setBackgroundResource(R.drawable.button_style_round_square_blue)
                 setTextColor(Color.parseColor("#298afd"))
             }
         }
+        2 -> when (button.id) {
+            R.id.create_repeat_week_btn -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square)
+                setTextColor(Color.parseColor("#80666666"))
+            }
+            R.id.create_repeat_onetime_btn -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square_blue)
+                setTextColor(Color.parseColor("#298afd"))
+            }
+        }
+    }
+}
+
+@BindingAdapter("setStrengthButton")
+fun setStrengthButton(button: Button, type: Int) {
+    when (type) {
+        1 -> when (button.id) {
+            R.id.create_strength_btn_1 -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square_blue)
+                setTextColor(Color.parseColor("#298afd"))
+            }
+            R.id.create_strength_btn_2 -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square)
+                setTextColor(Color.parseColor("#80666666"))
+            }
+            R.id.create_strength_btn_3 -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square)
+                setTextColor(Color.parseColor("#80666666"))
+            }
+        }
+        2 -> when (button.id) {
+            R.id.create_strength_btn_1 -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square)
+                setTextColor(Color.parseColor("#80666666"))
+            }
+            R.id.create_strength_btn_2 -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square_blue)
+                setTextColor(Color.parseColor("#298afd"))
+            }
+            R.id.create_strength_btn_3 -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square)
+                setTextColor(Color.parseColor("#80666666"))
+            }
+        }
+        3 -> when (button.id) {
+            R.id.create_strength_btn_1 -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square)
+                setTextColor(Color.parseColor("#80666666"))
+            }
+            R.id.create_strength_btn_2 -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square)
+                setTextColor(Color.parseColor("#80666666"))
+            }
+            R.id.create_strength_btn_3 -> button.apply {
+                setBackgroundResource(R.drawable.button_style_round_square_blue)
+                setTextColor(Color.parseColor("#298afd"))
+            }
+        }
+
     }
 }
