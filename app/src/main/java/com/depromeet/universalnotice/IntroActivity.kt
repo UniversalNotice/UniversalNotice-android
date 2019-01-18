@@ -8,7 +8,9 @@ import com.depromeet.universalnotice.databinding.ActivityIntroBinding
 import com.depromeet.universalnotice.ui.intro.IntroPagerAdapter
 import com.depromeet.universalnotice.ui.intro.IntroViewModel
 import kotlinx.android.synthetic.main.activity_intro.*
-import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.clearTask
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.newTask
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -31,8 +33,8 @@ class IntroActivity : AppCompatActivity() {
         })
 
         viewModel.activityToStart.observe(this, Observer {
-            startActivity<MainActivity>()
-            finish()
+            startActivity(intentFor<MainActivity>().newTask().clearTask())
+            overridePendingTransition(R.anim.transition_in, R.anim.transition_out)
         })
     }
 }
