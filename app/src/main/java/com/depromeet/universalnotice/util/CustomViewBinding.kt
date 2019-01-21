@@ -1,45 +1,44 @@
 package com.depromeet.universalnotice.util
 
+import android.annotation.TargetApi
 import android.graphics.Color
-import android.util.Log
-import android.view.View
-import android.widget.*
+import android.os.Build
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.databinding.adapters.SeekBarBindingAdapter
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.depromeet.universalnotice.R
+import com.depromeet.universalnotice.model.Category
 import com.depromeet.universalnotice.ui.mainlist.MainListAdapter
-import org.jetbrains.anko.applyRecursively
-import org.jetbrains.anko.custom.style
 import org.jetbrains.anko.textColor
+import java.time.LocalTime
 
 @BindingAdapter("setAdapter")
 fun setAdapter(recyclerView: RecyclerView, adapter: MainListAdapter) {
     val recyclerViewLayoutManager = LinearLayoutManager(recyclerView.context)
-    recyclerView.setHasFixedSize(true)
-    recyclerView.setLayoutManager(recyclerViewLayoutManager)
-    recyclerView.setAdapter(adapter)
+    recyclerView.apply {
+        setHasFixedSize(true)
+        layoutManager = recyclerViewLayoutManager
+        this.adapter = adapter
+    }
 }
 
-
 @BindingAdapter("setCategory")
-fun setCategory(imageview: ImageView, category: Int) {
-    if (category == 1) {
-        when (imageview.id) {
+fun setCategory(imageview: ImageView, category: Category?) {
+    when (category) {
+        Category.SLEEP -> when (imageview.id) {
             R.id.create_category_image1 -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep)
             R.id.create_category_image2 -> imageview.setImageResource(R.drawable.ic_alarm_category_todo_off)
             R.id.create_category_image3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule_off)
         }
-    } else if (category == 2) {
-        when (imageview.id) {
+        Category.TODO -> when (imageview.id) {
             R.id.create_category_image1 -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep_off)
             R.id.create_category_image2 -> imageview.setImageResource(R.drawable.ic_alarm_category_todo)
             R.id.create_category_image3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule_off)
         }
-    } else {
-        when (imageview.id) {
+        else -> when (imageview.id) {
             R.id.create_category_image1 -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep_off)
             R.id.create_category_image2 -> imageview.setImageResource(R.drawable.ic_alarm_category_todo_off)
             R.id.create_category_image3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule)
@@ -48,21 +47,19 @@ fun setCategory(imageview: ImageView, category: Int) {
 }
 
 @BindingAdapter("setCategoryText")
-fun setCategoryText(textView: TextView, category: Int) {
-    if (category == 1) {
-        when (textView.id) {
+fun setCategoryText(textView: TextView, category: Category?) {
+    when (category) {
+        Category.SLEEP -> when (textView.id) {
             R.id.create_category_text1 -> textView.setTextColor(Color.parseColor("#0d0d0d"))
             R.id.create_category_text2 -> textView.setTextColor(Color.parseColor("#999999"))
             R.id.create_category_text3 -> textView.setTextColor(Color.parseColor("#999999"))
         }
-    } else if (category == 2) {
-        when (textView.id) {
+        Category.TODO -> when (textView.id) {
             R.id.create_category_text1 -> textView.setTextColor(Color.parseColor("#999999"))
             R.id.create_category_text2 -> textView.setTextColor(Color.parseColor("#0d0d0d"))
             R.id.create_category_text3 -> textView.setTextColor(Color.parseColor("#999999"))
         }
-    } else {
-        when (textView.id) {
+        else -> when (textView.id) {
             R.id.create_category_text1 -> textView.setTextColor(Color.parseColor("#999999"))
             R.id.create_category_text2 -> textView.setTextColor(Color.parseColor("#999999"))
             R.id.create_category_text3 -> textView.setTextColor(Color.parseColor("#0d0d0d"))
@@ -70,19 +67,36 @@ fun setCategoryText(textView: TextView, category: Int) {
     }
 }
 
+@TargetApi(Build.VERSION_CODES.O)
+@BindingAdapter("setListTime")
+fun setListTime(textView: TextView,time:LocalTime){
+
+    textView.text = ""+time.hour+":"+time.minute
+}
+
+@TargetApi(Build.VERSION_CODES.O)
+@BindingAdapter("setInterval","setIntervalType")
+fun setIntervalText(textView: TextView,time: LocalTime,bool: Boolean){
+    if(bool){
+        textView.text = "이전 "+time.hour+"분"
+    } else {
+        textView.text = "이후 "+time.hour+"분"
+    }
+}
+
 @BindingAdapter("setItemImage", "imageViewcategory")
-fun setItemImage(imageview: ImageView, bool: Boolean, category: Int) {
-    if (bool == true) {
+fun setItemImage(imageview: ImageView, bool: Boolean, category: Category) {
+    if (bool) {
         when (category) {
-            1 -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep)
-            2 -> imageview.setImageResource(R.drawable.ic_alarm_category_todo)
-            3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule)
+            Category.SLEEP -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep)
+            Category.TODO -> imageview.setImageResource(R.drawable.ic_alarm_category_todo)
+            Category.PLAN -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule)
         }
     } else {
         when (category) {
-            1 -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep_off)
-            2 -> imageview.setImageResource(R.drawable.ic_alarm_category_todo_off)
-            3 -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule_off)
+            Category.SLEEP -> imageview.setImageResource(R.drawable.ic_alarm_category_sleep_off)
+            Category.TODO -> imageview.setImageResource(R.drawable.ic_alarm_category_todo_off)
+            Category.PLAN -> imageview.setImageResource(R.drawable.ic_alarm_category_schedule_off)
         }
     }
 }
@@ -226,3 +240,5 @@ fun setStrengthButton(button: Button, type: Int) {
 
     }
 }
+
+//TODO ampm 구별해서 뷰에 설정해주기.

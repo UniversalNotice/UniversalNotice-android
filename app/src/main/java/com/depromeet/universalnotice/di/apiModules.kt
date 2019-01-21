@@ -1,11 +1,9 @@
 package com.depromeet.universalnotice.di
 
-import android.os.Build
 import com.depromeet.universalnotice.BuildConfig
-import com.depromeet.universalnotice.api.UserApi
+import com.depromeet.universalnotice.api.Api
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
-import org.koin.dsl.module.Module
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -19,8 +17,6 @@ val apiModules = module {
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BuildConfig.BaseServerURL)
             .build()
-            .create(UserApi::class.java)
+            .create(Api::class.java)
     }
-
-
 }

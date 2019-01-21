@@ -14,4 +14,5 @@ class IntroRepository(context: Context) {
     fun setExecuted() = preference.edit {
         putBoolean("executed", true)
     }
+
 }

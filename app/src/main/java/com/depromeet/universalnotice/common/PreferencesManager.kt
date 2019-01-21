@@ -19,6 +19,7 @@ class PreferencesManager{
         private val FCM_TOKEN_PROPERTY_NAME = "FCM_TOKEN"
         private val DEVICE_UUID = "UUID"
         private val CACHE_DEVICE_ID = "CacheDeviceID"
+        private val USER_ID = "UserID"
         private var pref: SharedPreferences? = null
 
         fun setManager(context: Context) {
@@ -29,6 +30,16 @@ class PreferencesManager{
                     MODE_PRIVATE
                 )
             }
+        }
+
+        fun getUserID(): String? {
+            return pref?.getString(USER_ID,"")
+        }
+
+        fun setUserID(id: String){
+            val editor = pref?.edit()
+            editor?.putString(USER_ID,id)
+            editor?.apply()
         }
 
         fun getFcmToken(): String? {

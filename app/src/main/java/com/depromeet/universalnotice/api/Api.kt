@@ -5,7 +5,7 @@ import okhttp3.Response
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface UserApi{
+interface Api{
 
     @POST("user/update")
     fun postUserToken(

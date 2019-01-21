@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.depromeet.universalnotice.R
+import com.depromeet.universalnotice.model.Category
 import com.depromeet.universalnotice.util.SingleLiveEvent
 import java.util.*
 
@@ -20,8 +21,8 @@ class CreateAlarmViewModel : ViewModel(), View.OnClickListener, TextViewBindingA
     val dismiss: LiveData<Any>
         get() = _dismiss
 
-    private val _category = MutableLiveData<Int>() // 카테고리 버튼
-    val category: LiveData<Int>
+    private val _category = MutableLiveData<Category>() // 카테고리 버튼
+    val category: LiveData<Category>
         get() = _category
 
     private val _alarmName = MutableLiveData<String>() // 알림 이름
@@ -104,7 +105,7 @@ class CreateAlarmViewModel : ViewModel(), View.OnClickListener, TextViewBindingA
     // TODO: api 에 따른 model값 변수 생성 ( 시작구간, 끝 구간, 알림 간격, 반복 요일, 반복설정 버튼, 특정일 알림, 강도 설정)
 
     init {
-        _category.postValue(1)
+        _category.postValue(Category.SLEEP)
         _isAlarm.postValue(false)
         _alarmTiming.postValue(1)
         _targetTime.postValue("00:00")
@@ -163,9 +164,9 @@ class CreateAlarmViewModel : ViewModel(), View.OnClickListener, TextViewBindingA
                     "@@@ModelData//",
                     "category:" + _category.value + " alarmName:" + _alarmName.value + " isAlarm:" + _isAlarm.value + " alarmTiming:" + _alarmTiming.value + " targetTime:" + _targetTime.value + " alarminterval:" + _alarmInterval.value
                 )
-                R.id.create_category_btn1 -> _category.postValue(1)
-                R.id.create_category_btn2 -> _category.postValue(2)
-                R.id.create_category_btn3 -> _category.postValue(3)
+                R.id.create_category_btn1 -> _category.postValue(Category.SLEEP)
+                R.id.create_category_btn2 -> _category.postValue(Category.TODO)
+                R.id.create_category_btn3 -> _category.postValue(Category.PLAN)
                 R.id.create_target_time_text,R.id.create_target_time_btn -> _isAlarm.postValue(!(isAlarm.value)!!)
                 R.id.create_target_time_before -> _alarmTiming.postValue(1)
                 R.id.create_target_time_after -> _alarmTiming.postValue(2)
