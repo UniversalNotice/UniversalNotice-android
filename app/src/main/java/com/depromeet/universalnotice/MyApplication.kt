@@ -28,13 +28,13 @@ class MyApplication : Application() {
         var uuid =  PreferencesManager.getUuid()
 
 
-        if (fcmToken?.isEmpty()!!) {
-//            PreferencesManager.setFcmToken(FirebaseInstanceId.getInstance().token!!)
-            FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
-                PreferencesManager.setFcmToken(it.token)
-            }
-            fcmToken = PreferencesManager.getFcmToken()
-        }
+//        if (fcmToken?.isEmpty()!!) {
+////            PreferencesManager.setFcmToken(FirebaseInstanceId.getInstance().token!!)
+//            FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
+//                PreferencesManager.setFcmToken(it.token)
+//            }
+//            fcmToken = PreferencesManager.getFcmToken()
+//        }
         if(uuid?.isEmpty()!!){
             PreferencesManager.setUuid()
             uuid = PreferencesManager.getUuid()
