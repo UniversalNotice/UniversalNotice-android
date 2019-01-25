@@ -28,6 +28,11 @@ class MainListViewModel(
     val createAlarm: LiveData<Any>
         get() = _createAlarm
 
+    private val _removeAlarm = SingleLiveEvent<Any>()
+    val removeAlarm  :LiveData<Any>
+        get() = _removeAlarm
+
+
     private val _isEmpty = MutableLiveData<Int>()
     val isEmpty: LiveData<Int>
         get() = _isEmpty
@@ -51,10 +56,8 @@ class MainListViewModel(
     @TargetApi(Build.VERSION_CODES.O)
     fun fetchList() {
 //        //TODO : alarmlist 갱신.
-        val time: LocalTime
-        val time2: LocalTime
-        time = LocalTime.of(10,20,30)
-        time2 = LocalTime.of(20,30,0)
+        val time: LocalTime = LocalTime.of(10,20,30)
+        val time2: LocalTime = LocalTime.of(20,30,0)
         var al = Alarm(Category.SLEEP, "알림", time, true, true, 5 ,time,time, "월 화 수", true, Level.HIGH,true,0)
         var al2 = Alarm(Category.TODO, "알리미", time2, true, false, 10 , time,time,"월 화 수 목 금", true,Level.LOW,false,0)
         var list = ArrayList<Alarm>()
@@ -76,7 +79,7 @@ class MainListViewModel(
         if (p0 != null) {
             when (p0.id) {
                 R.id.mainlist_remove_btn -> {
-
+                    _removeAlarm.call()
                 }
                 R.id.mainlist_add_btn -> {
                     _createAlarm.call()

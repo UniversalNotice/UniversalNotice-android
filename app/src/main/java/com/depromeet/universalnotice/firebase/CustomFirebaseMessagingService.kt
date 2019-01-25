@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.depromeet.universalnotice.MainActivity
 import com.depromeet.universalnotice.R
+import com.depromeet.universalnotice.common.PreferencesManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -17,8 +18,9 @@ class CustomFirebaseMessagingService : FirebaseMessagingService(){
 
     private val TAG = "FirebaseService"
 
-    override fun onNewToken(token: String?) {
+    override fun onNewToken(token: String) {
         super.onNewToken(token)
+        PreferencesManager.setFcmToken(token)
         Log.d(TAG, "new Token: $token")
     }
 

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F4F4F5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/target_alarm_circle"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="142dp"
+            android:background="#298afd">
+
+        <TextView
+                android:id="@+id/target_alarm_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="-10sp"
+                android:text="11:00"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="75dp"
+                android:layout_marginLeft="61dp"
+        />
+
+        <TextView
+                android:id="@+id/target_alarm_ampm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="5sp"
+                android:text="PM"
+                app:layout_constraintStart_toEndOf="@id/target_alarm_time"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="88dp"
+                android:layout_marginLeft="4dp"
+        />
+
+        <TextView
+                android:id="@+id/target_alarm_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="20sp"
+                android:gravity="center_horizontal"
+                android:text="글쓰기 과제 제출"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/target_alarm_time"
+                android:layout_marginTop="1.7dp"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#16161a"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="12sp"
+            android:gravity="center_horizontal"
+            android:text="일이 많아서가 아니라\n제 때 안해서 밀리는 거야"
+            app:layout_constraintTop_toBottomOf="@id/target_alarm_circle"
+            android:layout_marginTop="63.7dp"
+    />
+
+    <Button
+            android:id="@+id/target_alarm_button"
+            android:layout_width="328dp"
+            android:layout_height="52dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="40dp"
+            android:text="알람 종료하기"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_style_round_square_filled_blue"
+    />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
