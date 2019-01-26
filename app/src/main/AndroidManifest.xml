@@ -26,6 +26,8 @@
 
         </activity>
 
+        <activity android:name=".AlertActivity" />
+
         <service
                 android:name=".firebase.CustomFirebaseMessagingService"
                 android:exported="false">

@@ -8,4 +8,5 @@
         <item>만능알림을\n사용하기 위해서는\n알림 허용이\n필요합니다</item>
     </string-array>
     <string name="allow_alert_text">알림 허용하기</string>
+    <string name="finish_alert_text">알람 종료하기</string>
 </resources>

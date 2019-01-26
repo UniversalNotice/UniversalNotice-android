@@ -24,6 +24,8 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="AlertTheme" parent="IntroTheme"/>
+
      <!--커스텀 폰트 적용-->
     <style name="TextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
         <item name="android:fontFamily">@font/textview_font_family</item>
